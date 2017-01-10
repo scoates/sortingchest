@@ -31,7 +31,7 @@ public class ChestListener implements Listener {
 	public void onInv(InventoryCloseEvent event) {
         if (event.getPlayer() instanceof Player){
         	InventoryHolder holder = event.getInventory().getHolder();
-            Player player = (Player) event.getPlayer();
+        	Player player = (Player) event.getPlayer();
 
         	if (holder instanceof Chest) {
                 Chest chest = (Chest) holder;

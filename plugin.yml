@@ -1,0 +1,4 @@
+name: SortingChest
+main: com.seancoates.minecraft.sortingchest.SortingChest
+version: 0.1.1
+commands:

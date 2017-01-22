@@ -1,4 +1,7 @@
 name: SortingChest
-main: com.seancoates.minecraft.sortingchest.SortingChest
-version: 0.1.1
-commands:
+main: com.seancoates.minecraft.sortingchest.SortingChestPlugin
+version: 0.2.1
+commands: {}
+permissions:
+    sortingchest.sort:
+        description: allows users to sort from a sorting chest into a destination chest

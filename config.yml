@@ -1,0 +1,23 @@
+## Sorting Chest
+## Super short how-to:
+## - give users the sortingchest.sort permission
+## - have a user create a chest named 
+
+# Sends debug messages to console
+debug: false
+
+# Sends debug messages to the player who triggered the sorter
+debug_to_player: false
+
+# the distance away from the Source chest to search for Destination chests (in all axes)
+sort_distance: 20
+
+# if this is false, items will only stack up to their normal max stack size
+# if true, it will allow any item to stack up to 64
+allow_full_stacks: false
+
+# this is the name of the source chest (case-insensitive)
+source_chest_name: source
+
+# and the destination chest name (also case-insensitive)
+destination_chest_name: destination

@@ -55,7 +55,7 @@ public class ChestHandler {
 
         if (holder instanceof Chest) {
             Chest chest = (Chest) holder;
-            if (chest.getCustomName().toLowerCase().equals(this.source_name)) {
+            if (this.isSourceChest(chest)) {
                 Location loc = chest.getLocation();
                 // check permission
                 if (!this.player.hasPermission(this.plugin.sort_allowed)) {
@@ -68,8 +68,9 @@ public class ChestHandler {
             }
         } else if (holder instanceof DoubleChest) {
             DoubleChest chest = (DoubleChest) holder;
-            if (((Chest)chest.getLeftSide()).getCustomName().toLowerCase().equals(this.source_name) ||
-                    ((Chest)chest.getRightSide()).getCustomName().toLowerCase().equals(this.source_name)) {
+
+            if (this.isSourceChest((Chest) chest.getLeftSide()) ||
+                    this.isSourceChest((Chest) chest.getRightSide())) {
                 this.player.sendMessage("Chest sorting doesn't work on double chests.");
             }
         }
@@ -129,7 +130,8 @@ public class ChestHandler {
                     Material material = foundBlock.getType();
                     if (material == Material.CHEST || material == Material.TRAPPED_CHEST) {
                         Chest foundChest = (Chest) foundBlock.getState();
-                        if (foundChest.getCustomName().toLowerCase().equals(this.destination_name)) {
+                        String chestName = foundChest.getCustomName();
+                        if (chestName != null && chestName.toLowerCase().equals(this.destination_name)) {
                             foundChests.add(foundChest);
                             this.debug("Found a destination chest at: " + foundChest.getLocation() + " for " + this.player_name);
                         }
@@ -179,6 +181,14 @@ public class ChestHandler {
             placedItems += itemsToPlace;
         }
         return placedItems;
+    }
+
+    public Boolean isSourceChest(Chest chest) {
+        String chestName = chest.getCustomName();
+        if (chestName == null) {
+            return false;
+        }
+        return chestName.toLowerCase().equals(this.source_name);
     }
 
 }

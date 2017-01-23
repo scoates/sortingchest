@@ -51,18 +51,18 @@ public class ChestHandler {
             return;
         }
 
-        // no permission
-        if (!this.player.hasPermission(this.plugin.sort_allowed)) {
-            this.player.sendMessage("You do not have permission to sort items from this sorting chest.");
-            return;
-        }
-
         InventoryHolder holder = this.event.getInventory().getHolder();
 
         if (holder instanceof Chest) {
             Chest chest = (Chest) holder;
             if (chest.getCustomName().toLowerCase().equals(this.source_name)) {
                 Location loc = chest.getLocation();
+                // check permission
+                if (!this.player.hasPermission(this.plugin.sort_allowed)) {
+                    this.player.sendMessage("You do not have permission to sort items from this sorting chest.");
+                    return;
+                }
+
                 this.debug(this.player_name + " closed the source chest at " + loc);
                 this.sortItemsFromChest(chest);
             }

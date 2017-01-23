@@ -1,6 +1,6 @@
 name: SortingChest
 main: com.seancoates.minecraft.sortingchest.SortingChestPlugin
-version: 0.2.2
+version: 0.2.3
 commands: {}
 permissions:
     sortingchest.sort:
